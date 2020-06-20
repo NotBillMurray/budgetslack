@@ -82,7 +82,10 @@ class App extends React.Component {
       .then(data => {
         console.log(data)
         if (data.errorMsg) return cb(data.errorMsg)
-        cb()
+        this.setState({
+          user: user.username,
+          token: data.token
+        }, () => cb())
       })
       .catch(cb)
   }
